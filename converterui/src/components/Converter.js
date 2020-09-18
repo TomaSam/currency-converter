@@ -50,10 +50,9 @@ class Converter extends Component {
                          onChange={this.inputChange}></input>
                     </div>
                     
-                
-                        <List inputChange={this.inputChange} convert={"convertFrom"} />
-                  
-                        <List inputChange={this.inputChange} convert={"convertTo"} />
+                        <List inputChange={this.inputChange} convert={"convertFrom"} label={"Conver From"} />
+    
+                        <List inputChange={this.inputChange} convert={"convertTo"} label={"Convert To"} />
                                      
                     <div className="center">
                     <button type="submit" className="btn btn-info">Convert</button>

@@ -3,7 +3,7 @@ import React from 'react';
 function List(props) {
         return (
             <div className="form-group">
-                <label htmlFor={props.convert}>Convert From </label>
+                <label htmlFor={props.convert}>{props.label}</label>
                 <select className="form-control" id="convertFrom" name={props.convert}
                     onChange={props.inputChange} required defaultValue={'DEFAULT'}>
                         <option value="DEFAULT" disabled>Choose Currency</option>

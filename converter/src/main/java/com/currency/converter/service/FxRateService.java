@@ -6,6 +6,7 @@ public interface FxRateService {
 
 	FxRate findByCurrency(String currency);
 	void saveRatesToRepository() throws Exception;
+	boolean existByCurrency(String currency);
 	
 	
 }

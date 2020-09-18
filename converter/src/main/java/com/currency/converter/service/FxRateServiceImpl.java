@@ -27,6 +27,12 @@ public class FxRateServiceImpl implements FxRateService {
 		return rateRepository.findAll().stream().filter(rate -> rate.getCurrency().equals(currency)).findFirst().orElse(null);
 	}
 	
+	public boolean existByCurrency(String currency) {
+		if (rateRepository.findAll().stream().anyMatch(element -> element.getCurrency().equals(currency)));
+		return true;
+		
+	}
+	
 	public void saveRatesToRepository() throws Exception {
 		
 		try {
@@ -42,22 +48,28 @@ public class FxRateServiceImpl implements FxRateService {
 
 			NodeList nList = doc.getElementsByTagName("CcyAmt");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
-				if (temp%2 != 0) {
-				Node nNode = nList.item(temp);
-
-				Element eElement = (Element) nNode;
-				BigDecimal rate = new BigDecimal(eElement.getElementsByTagName("Amt").item(0)
-						.getTextContent()).setScale(4, BigDecimal.ROUND_DOWN);
-
-				String currency = eElement.getElementsByTagName("Ccy").item(0).getTextContent();
 				
-				FxRate updateRate = findByCurrency(currency);
-				updateRate.setRate(rate);
-				rateRepository.save(updateRate);		
+				Node nNode = nList.item(temp);
+				
+				Element eElement = (Element) nNode;
+				
+				if (!eElement.getElementsByTagName("Ccy").item(0).getTextContent().equals("EUR")) {
+					
+					String currency = eElement.getElementsByTagName("Ccy").item(0).getTextContent();
+					
+					BigDecimal rate = new BigDecimal(eElement.getElementsByTagName("Amt").item(0)
+							.getTextContent()).setScale(2, BigDecimal.ROUND_DOWN);
+				
+					FxRate updateRate = findByCurrency(currency);
+					updateRate.setRate(rate);
+					System.out.println(updateRate.getCurrency() + " " + updateRate.getRate());
+					rateRepository.save(updateRate);
+					
 				}	
 			}
 			
 			System.out.println("Repository updated");
+
 		}
 		catch (Exception e) {
 			e.printStackTrace();
