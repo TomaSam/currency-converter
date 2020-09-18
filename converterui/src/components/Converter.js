@@ -62,8 +62,8 @@ class Converter extends Component {
                 </form>
               
                 <div className="text-center">
-                    <h4 className="pt-3">Converted Amount</h4>
-                    <h4 className="pb-3">{this.state.convertedAmount}</h4>
+                    <label for="">Converted Amount</label>
+                    <input type="number" className="form-control input-size" value={this.state.convertedAmount}></input>
                 </div>
                 
             </div>
