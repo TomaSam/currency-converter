@@ -4,7 +4,7 @@ function List(props) {
         return (
             <div className="form-group">
                 <label htmlFor={props.convert}>{props.label}</label>
-                <select className="form-control" id="convertFrom" name={props.convert}
+                <select className="form-control" id={props.convert} name={props.convert}
                     onChange={props.inputChange} required defaultValue={'DEFAULT'}>
                         <option value="DEFAULT" disabled>Choose Currency</option>
                         <option value="EUR">Euro - EUR</option>

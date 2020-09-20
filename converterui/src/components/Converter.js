@@ -35,6 +35,10 @@ class Converter extends Component {
 
     }
 
+    handleChange = (e) => {
+        this.setState({value: e.target.value});
+    }
+
     render() {
         return (
 
@@ -61,8 +65,12 @@ class Converter extends Component {
                 </form>
               
                 <div className="text-center">
-                    <label for="">Converted Amount</label>
-                    <input type="number" className="form-control input-size" value={this.state.convertedAmount}></input>
+                    <label htmlFor="">Converted Amount</label>
+                    <input type="number" className="form-control input-size" 
+                        value={this.state.convertedAmount}
+                        onChange={this.handleChange}
+                        >
+                    </input>
                 </div>
                 
             </div>
