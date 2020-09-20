@@ -19,6 +19,7 @@ In database add 2 tables with these columns:
 
 Import Fx Rates to fx_rate table.
 Fx Rates you can find in folder converter/src/main/resources/fx_rate.csv.
+Change datasource username and password in application.properties file with your created database credentials.
 
 In the project directory converter, run:
 
